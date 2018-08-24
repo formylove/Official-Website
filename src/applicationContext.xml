@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation=
+	 "http://www.springframework.org/schema/beans
+	 http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	 http://www.springframework.org/schema/aop
+	 http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	 http://www.springframework.org/schema/mvc
+	 http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+	 http://www.springframework.org/schema/context
+	 http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	 
+<context:component-scan base-package="com.hiit.smm"></context:component-scan>
+<mvc:resources mapping="/css/**" location="/WEB-INF/css/"/>
+<context:property-placeholder location="classpath:db.properties"/>
+
+<mvc:annotation-driven conversion-service="intConverter"/>
+<bean id="intConverter" class="org.springframework.context.support.ConversionServiceFactoryBean">
+<property name="converters">
+<set>
+<bean class="com.hiit.smm.converter.IntConverter"></bean>
+</set>
+</property>
+</bean>
+
+
+<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+<property name="prefix" value="/WEB-INF/pages/"></property>
+<property name="suffix" value=".jsp"></property>
+</bean>
+<bean id="ds" class="com.alibaba.druid.pool.DruidDataSource">
+<property name="driverClassName" value="${j_driver}"></property>
+<property name="url" value="${j_url}"></property>
+</bean>
+<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sf">
+<property name="dataSource" ref="ds"></property>
+<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+</bean>
+<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+<property name="basePackage" value="com.hiit.smm.dao"></property>
+</bean>
+
+</beans>
