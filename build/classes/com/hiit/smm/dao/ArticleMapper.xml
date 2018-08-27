@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper  namespace="com.hiit.smm.dao.ArticleMapper">
+
+<select id="getAllArticles"   resultType="article">
+select * from news  order by id desc 
+</select>
+
+<select id="getArticlesByAuthor"  parameterType="String"  resultType="article">
+select * from news   where  author = #{author} order by id desc 
+</select>
+
 <select id="getSlidingArticles" parameterType="String" resultType="article">
 select * from news where date=#{date} and position in(1,5) order by position desc,id desc limit 0,6
 </select>
@@ -25,23 +34,27 @@ select * from news where id=#{id}
 <insert id="addArticle"  parameterType="article">
     insert into
     news(profile, title, summary, content, position, date,author) 
-    values('#{article.profile}', '#{article.title}', '#{article.summary}',
-     '#{article.content}', #{article.position}, '#{article.date}', '#{article.author}')
+    values(#{profile}, #{title},#{summary},
+     #{content}, #{position}, #{date}, #{author})
 </insert>
 
 <update id="updateArticle"  parameterType="article">
-update news set profile=#{article.profile}, title=#{article.profile}, 
-summary=#{article.summary}, content=#{article.article}, position=#{article.position},
- date=#{article.date} ,author=#{article.author}  where id = #{article.id}
+update news set profile=#{profile}, title=#{profile}, 
+summary=#{summary}, content=#{content}, position=#{position},
+ date=#{date} ,author=#{author}  where id = #{id}
 </update>
 
 <delete id="delectArticle"  parameterType="int" >
 delete from news where id=#{id}
 </delete>
+
 <select id="getLatestDate" resultType="String">
 select max(date) from news 
 </select>
 
+<select id="getAllDate" resultType="String">
+select distinct(date) from news order by date desc 
+</select>
 
 </mapper>
 

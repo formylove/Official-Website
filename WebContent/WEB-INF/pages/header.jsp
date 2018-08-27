@@ -1,6 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
-<link rel="stylesheet" href="${baseUrl}css/nav.css">
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <header class="common-header J_commonHeaderWrapper scrolling"
 	data-stat-module="dingbudaohang">
 	<div class="container">
@@ -17,55 +15,40 @@
 						data-stat-click="shouye">首页</a></li>
 					<li name="index" class="active"><a href="${baseUrl}"
 						data-stat-click="shouye">首页</a></li>
-					<li name="kaike" class="kaike"><a
-						href="https://36kr.com/subscribe?ktm_source=kaike_pclandingpage"
-						data-stat-click="kaike">昨日新闻</a></li>
-					<li name="newsflashes"><a href="https://36kr.com/newsflashes"
-						data-stat-click="7*24">7×24h 快讯</a></li>
-					<li class="mobile-show"><a
-						href="http://chuang.36kr.com/huodong#/report/recent"
-						data-stat-click="jinqihuodong">近期活动</a></li>
-					<li class="mobile-show"><a href="https://www.jingdata.com/"
-						data-stat-click="jingzhun">鲸准</a></li>
-					<li class="mobile-show"><a href="http://krspace.cn/"
-						data-stat-click="krspace">氪空间</a></li>
-					<li class="mobile-show"></li>
-					<li class="firstlevel li-chuang pop-row-trigger"><a
-						href="javascript:void(0)" class="trigger-hide"
-						data-hover-target="startup-service-pop"
-						data-stat-hover="woshichuangyezhe">创业者服务 <i
-							class="headericon-arrow-drop-down"></i></a></li>
-					<li class="firstlevel li-tou pop-row-trigger"><a
-						href="javascript:void(0)" class="trigger-hide"
-						data-hover-target="investor-service-pop"
-						data-stat-hover="woshitouziren">投资人服务 <i
-							class="headericon-arrow-drop-down"></i></a></li>
-					<li class="discover pop-row-trigger"><a
-						href="javascript:void(0)" class="trigger-hide pointer-box"
-						data-hover-target="contact-us-pop" data-stat-hover="faxian">联系我们
-							<i class="headericon-arrow-drop-down"></i>
-					</a></li>
 				</ul>
 			</nav>
 		</div>
 		<div class="right-col J_rightNavWrapper">
 			<ul class="sub-nav">
 				<li class="report-btn mobile-hide" ">
-				<a href="https://kefu.easemob.com/webim/im.html?tenantId=49246"
-					target="_blank" data-stat-click="xunqiubaodao"> 抓取今日新闻 </a></li>
+				<a href="javascript:void(0)">抓取今日新闻 </a>
+				</li>
 					
-					
+			<c:if test="${admin == null }">
 				<li class="login-actions">
 					<div class="login">
 						<div class="group">
 							<i class="headericon-Icon_SignIn blackhidden"></i> <i
-								class="headericon-header-user whitehidden"></i> <a
-								href="javascript:void(0)" class="J_login login-link"
-								data-stat-click="denglu">登录</a>
+								class="headericon-header-user whitehidden"></i>
+								 <a href="${baseUrl}login/" class="J_login login-link" >登录</a>
 						</div>
-						<b class="whitehidden"> / </b>
+						<b class="whitehidden">/</b>
 					</div>
 				</li>
+			</c:if>
+			<c:if test="${admin != null }">
+			<li class="user-menu">
+			<a href="javascript:void(0);" class="head-avatar" >
+			<div class="head-avatar-img" style="background-image: url(${baseUrl}portrait/${admin.portrait}.png)"></div>
+				</a>
+					<div class="menu-wrap pop-up">
+						<div class="menu">
+							<a href="${baseUrl}manage/" target="_blank">后台管理</a> 
+							<a href="javascript:void(0)" class="J_logout" >退出</a>
+						</div>
+					</div>
+					</li>
+			</c:if>
 			</ul>
 		</div>
 	</div>

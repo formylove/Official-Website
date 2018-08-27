@@ -18,8 +18,15 @@
 	 
 <context:component-scan base-package="com.hiit.smm"></context:component-scan>
 <mvc:resources mapping="/css/**" location="/WEB-INF/css/"/>
+<mvc:resources mapping="/js/**" location="/WEB-INF/js/"/>
+<mvc:resources mapping="/easyui/**" location="/WEB-INF/easyui/"/>
+<mvc:resources mapping="/md/**" location="/WEB-INF/md/"/>
+<mvc:resources mapping="/img/**" location="/WEB-INF/img/"/>
+<mvc:resources mapping="/portrait/**" location="/WEB-INF/portrait/"/>
 <context:property-placeholder location="classpath:db.properties"/>
-
+<mvc:interceptors>
+<bean class="com.hiit.smm.interceptor.LoginInterceptor"></bean>
+</mvc:interceptors>
 <mvc:annotation-driven conversion-service="intConverter"/>
 <bean id="intConverter" class="org.springframework.context.support.ConversionServiceFactoryBean">
 <property name="converters">

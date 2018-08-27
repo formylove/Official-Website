@@ -1,36 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<c:set var="baseUrl" value="http://127.0.0.1/36kr/" />
-<c:set var="aUrl" value="http://127.0.0.1/36kr/a/" />
 <html lang="zh-CN" class="">
 <head>
-<script src="https://code.jquery.com/jquery-3.3.1.js"
-	integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-	crossorigin="anonymous"></script>
-  <link rel="stylesheet"
-	href="//sta.36krcnd.com/common-module/common-header/style-3322e.css">
+<%@ include file="./static_file.jsp" %>
 <link rel="stylesheet" href="${baseUrl}css/article.css">
-
 <title>${article.title}</title>
-<base href="https://36kr.com">
-<link href="//36kr.com/favicon.ico" rel="shortcut icon"
-	type="image/vnd.microsoft.icon">
-
-<link rel="apple-touch-icon" href="/apple-touch-icon-iphone.png">
-<link rel="apple-touch-icon" sizes="72x72"
-	href="/apple-touch-icon-ipad.png">
-<link rel="apple-touch-icon" sizes="114x114"
-	href="/apple-touch-icon-iphone4.png">
-<script type="text/javascript" async=""
-	src="http://www.qipus.cn/cmp/cmp.api?r=&amp;s=5006&amp;u=file%3A%2F%2F%2FC%3A%2FUsers%2FA%2FDesktop%2Farticle.html"></script>
-<link
-	href="//sta.36krcnd.com/36krx2016-front/static/common-b94ae260c13bbc22f15f.css"
-	rel="stylesheet">
-<link
-	href="//sta.36krcnd.com/36krx2016-front/static/app-b94ae260c13bbc22f15f.css"
-	rel="stylesheet">
 </head>
 
 
@@ -38,12 +13,9 @@
 
 
 <body style="padding-bottom: 68px;">
-	<div class="header-notice"></div>
-	<link rel="stylesheet" href="//sta.36krcnd.com/common-module/common-header/style-3322e.css">
-
 
 <%@ include file="./header.jsp" %>
-
+<%@ include file="./overlay.jsp" %>
 
 	<div id="app">
 		<div data-reactroot="">
@@ -133,8 +105,6 @@
 
 
 
-	<link rel="stylesheet"
-		href="//sta.36krcnd.com/common-module/common-footer/footer-b6116.css">
 	<footer class="common-footer">
 		<div class="bottom">
 			<div class="container">
