@@ -67,7 +67,7 @@ function formCheck(form){
 	var good = true;
 	inputs.each(function(){
 		input =$(this);
-		if((input.val() == '' || input.val() == null) && input.attr('type') != 'file'){
+		if((input.val() == '' || input.val() == null) && input.attr('type') != 'file' && input.attr('type') != 'profile'){
 		$.messager.alert('警告',input.attr('name') + ' 不能为空！');
 		good = false;
 		return false;//continue 用return true。这里的return针对function(){}
