@@ -12,7 +12,6 @@
 <body class="">
 	<%@ include file="./header.jsp"%>
 	<%@ include file="./overlay.jsp" %>
-	
 	<div ui-view="" class="ng-scope">
 		<div class="index-bg ng-scope"></div>
 		<div class="login-index-wrap ng-scope">
@@ -44,9 +43,6 @@
 								name="password" placeholder="密码"
 								required="">
 						</div>
-						<!-- ngIf: formData.needCaptcha && !geetestStatus.loginMore -->
-
-
 						<button id="kr-shield-submit" type="button" class="btn btn-primary"
 							style="margin-top: 50px;">立即登录</button>
 					</form>

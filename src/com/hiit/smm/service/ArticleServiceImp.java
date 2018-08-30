@@ -18,39 +18,27 @@ public class ArticleServiceImp implements ArticleService {
 	}
 
 	@Override
-	public List<Article> getSlidingArticles(String date) {
+	public List<Article> getSlidingArticles() {
 		// TODO Auto-generated method stub
-		List<Article> arts =am.getSlidingArticles(date);
+		List<Article> arts =am.getSlidingArticles();
 		return arts;
 	}
 
 	@Override
-	public List<Article> getRecArticles(String date) {
-		List<Article> a =am.getRecArticles(date);
-		if(a.size() == 2) {
-			Article temp = new Article();
-			temp.setAuthor("叁拾陆氪评论员");
-			temp.setContent("空空如也");
-			temp.setSummary("有鄙夫问于我，空空如也，我叩其两端而竭焉。");
-			temp.setTitle("有鄙夫问于我，空空如也，我叩其两端而竭焉。");
-			temp.setProfile("https://pic.36krcnd.com/201808/24005950/irja3skztghbg7un!heading");
-			temp.setPosition(2);
-			temp.setId(340);
-			a.add(temp);
-		}
-		return a;
+	public List<Article> getRecArticles() {
+		return am.getRecArticles();
 	}
 
 	@Override
-	public List<Article> getLatestArticles(String date) {
+	public List<Article> getLatestArticles() {
 		// TODO Auto-generated method stub
-		return am.getLatestArticles(date);
+		return am.getLatestArticles();
 	}
 
 	@Override
-	public List<Article> getShortArticles(String date) {
+	public List<Article> getShortArticles() {
 		// TODO Auto-generated method stub
-		return am.getShortArticles(date);
+		return am.getShortArticles();
 	}
 
 	@Override
@@ -70,8 +58,8 @@ public class ArticleServiceImp implements ArticleService {
 	}
 
 	@Override
-	public void addArticle(Article article) {
-		am.addArticle(article);
+	public int addArticle(Article article) {
+		return am.addArticle(article);
 	}
 
 	@Override

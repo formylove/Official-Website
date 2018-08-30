@@ -1,3 +1,4 @@
+
 @media (max-width: 1555px) {
   /* line 21, /data/jenkins/workspace/f2e-prod-common-module/src/common-header/less/app.less */
   body > .christmas-wrapper {
@@ -563,12 +564,12 @@ header.common-header .logo {
   width: 61.5px;
   height: 34.5px;
   position: absolute;
-  top: 15px;
+  top: 9Px;
   left: 0;
 }
 /* line 310, /data/jenkins/workspace/f2e-prod-common-module/src/common-header/style.less */
 header.common-header .logo img {
-  width: 100%;
+  width: 80%;
 }
 @media (min-width: 1020px) and (max-width: 1280px) {
   /* line 313, /data/jenkins/workspace/f2e-prod-common-module/src/common-header/style.less */

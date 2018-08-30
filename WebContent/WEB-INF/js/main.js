@@ -1,4 +1,6 @@
-baseUrl='http://127.0.0.1/36kr/';
+baseUrl='http://sheyangtang.com/';
+var iCount;
+var timeInterval=101000;
 $(
 function(){
 	$(".J_logout").click(function(){
@@ -42,47 +44,46 @@ function(){
 	    });
 	});
 	
-	
+	$('.close-win-btn').click(function(){
+		$(this).parent().parent().removeClass('show');
+	})
+
 	
 	
 
 		 
 		 
-	document.onkeydown = function(e) {
-	    //console.log(e.ctrlKey);
-	    if (81 == e.keyCode && e.ctrlKey)
-	    {
-	        $(".J_contactUsWin").addClass("show");
-	    }
-	}
-	$('.close-win-btn').click(function(){
-		$(this).parent().parent().removeClass('show');
-	})
+
 	
 	
 	
 	
-	$('.report-btn').click(scrape);
 	$('.con h4').click(function(){
 		$(this).parent().parent().toggleClass('show');
 		$(this).next().slideToggle();
 	})
-	setInterval(forward,5000);
+	
+	
+	
+	iCount=setInterval(forward,timeInterval);
 	$(".icon-angle-left").click(backward);
 	$(".icon-angle-right").click(forward);
 
 }		
 )
 function forward(){
-	len =$("[name='sliders']").length
-	cur_id=$(".slick-current").attr('id')
+	clearInterval(iCount);
+	len =$("[name='sliders']").length;
+	cur_id=$(".slick-current").attr('id');
 	if(parseInt(cur_id) == len -1){
 		shift(0);
 	}else{
 		shift(parseInt(cur_id)+1);
 	}
+	iCount=setInterval(forward,timeInterval);
 }
 function backward(){
+	clearInterval(iCount);
 	len =$("[name='sliders']").length
 	cur_id=$(".slick-current").attr('id')
 	if(parseInt(cur_id) == 0){
@@ -90,35 +91,22 @@ function backward(){
 	}else{
 		shift(parseInt(cur_id)-1);
 	}
+	iCount=setInterval(forward,timeInterval);
 }
 function shift(id){
 	cur = $("#"+id);
 	sbs = cur.siblings();
 	cur.addClass('slick-current slick-active');
-	cur.css("z-index","999");
-	cur.css("opacity","1");
-	cur.css(" transition","unset");
-	cur.attr("aria-hidden","false");
-	cur.attr("tabindex","1");
-	
+	cur.css('display','block');
+	cur.animate({"z-index":"999","opacity":"1"},'slow');
 	sbs.removeClass('slick-current slick-active');
-	sbs.css("z-index","998");
-	sbs.css("opacity","0");
-	sbs.css(" transition","500ms linear 0s");
-	sbs.attr("aria-hidden","true");
-	sbs.attr("tabindex","0");
+	sbs.css('display','none');
+	sbs.animate({"z-index":"998","opacity":"0"},'slow');
 }
-function scrape(){
-	$(".J_sendPostWin").addClass("show")
-	request={
-		url:baseUrl+'/scrape/',
-		type:'PUT',
-		beforeSend:function(){$(".J_sendPostWin").addClass("show")}	,
-		success:function(date){
-			location.reload()//要重新连服务器以读得新的页面
-			//window.location.href=baseUrl;
-			}
-	}
-	$.ajax(request);
+function contactus(){
+	$(".J_contactUsWin").addClass("show");
+}
+function closeContactUS(){
+	$(".J_contactUsWin").removeClass("show");
 }
 

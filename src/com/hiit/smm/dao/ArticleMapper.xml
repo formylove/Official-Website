@@ -10,21 +10,23 @@ select * from news  order by id desc
 select * from news   where  author = #{author} order by id desc 
 </select>
 
-<select id="getSlidingArticles" parameterType="String" resultType="article">
-select * from news where date=#{date} and position in(1,5) order by position desc,id desc limit 0,6
+<select id="getSlidingArticles"  resultType="article">
+select * from news where  position =1 order by id desc limit 0,6
 </select>
 
-<select id="getRecArticles" parameterType="String" resultType="article">
-select * from news where date=#{date} and position in(2,6) order by position desc,id desc limit 0,3
+<select id="getRecArticles" resultType="article">
+select * from news where position = 2 order by id desc limit 0,3
 </select>
 
-<select id="getLatestArticles" parameterType="String" resultType="article">
-select * from news where date=#{date} and position in(3,7) order by position desc,id desc limit 0,2
+<select id="getLatestArticles" resultType="article">
+select * from news where position = 3 order by id desc limit 0,2
 </select>
 
 
-<select id="getShortArticles" parameterType="String" resultType="article">
-select * from news where date=#{date} and position in(4,8) order by position desc,id desc limit 0,10
+
+
+<select id="getShortArticles"   resultType="article">
+select * from news where  position = 4 order by id desc limit 0,10
 </select>
 
 <select id="getArticle" parameterType="int" resultType="article">
@@ -32,6 +34,9 @@ select * from news where id=#{id}
 </select>
 
 <insert id="addArticle"  parameterType="article">
+<selectKey resultType="int" order="AFTER" keyProperty="id">
+         select max(id)  from news
+      </selectKey>
     insert into
     news(profile, title, summary, content, position, date,author) 
     values(#{profile}, #{title},#{summary},
@@ -39,7 +44,7 @@ select * from news where id=#{id}
 </insert>
 
 <update id="updateArticle"  parameterType="article">
-update news set profile=#{profile}, title=#{profile}, 
+update news set profile=#{profile}, title=#{title}, 
 summary=#{summary}, content=#{content}, position=#{position},
  date=#{date} ,author=#{author}  where id = #{id}
 </update>

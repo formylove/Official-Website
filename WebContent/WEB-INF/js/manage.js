@@ -1,9 +1,105 @@
-baseUrl='http://127.0.0.1/36kr/';
+baseUrl='http://sheyangtang.com/';
 var editIndex = undefined;
-function updatepsd(){
-	if ($('#p2').val() == "" || $('#p2').val() == null) {
-        alert("用户名密码不能为空");
+var title = $('#addart [name=title]');
+var summary = $('#addart [name=summary]');
+var content = $('#addart [name=content]');
+var profile = $('#addart [name=profile]');
+var file = $('#addart [name=file]');
+var id = $('#addart [name=id]');
+var s_title = $('#newsletter [name=title]');
+var s_summary = $('#newsletter [name=summary]');
+var s_id = $('#newsletter [name=id]');
+var tabs = $('#tt');
+var form = $('#addart');
+var articles = $('#dg');
+var newsletter = $('#newsletter');
+function prepareAdding(isShortNews){
+	if(isShortNews){
+		$('#dlg3').dialog('open');
+		newsletter[0].reset();
+		s_id.val(-1);
 	}else{
+		tabs.tabs('select','编辑器');
+		testEditor.setMarkdown('');
+		form[0].reset();
+		id.val(-1);
+	}
+		
+}
+function prepareUpdating(){
+	var art = articles.datagrid('getSelected');
+//	var index = $('#dg').datagrid('getRowIndex',row);
+		if(art!=null){
+		$.ajax({
+			type : "POST",
+			dataType:'json',
+			contentType: false,
+		    processData: false,
+			url : baseUrl+'article/'+art.id,
+			success : function(article){
+				if(article.position == 4){
+					$("#p3").textbox("setValue", article.title);
+					$("#p4").textbox("setValue", article.summary);
+					s_id.val(article.id);
+					$('#dlg3').dialog('open');
+				}else{
+					tabs.tabs('select','编辑器');
+					$("#v1").textbox("setValue", article.title);
+					$("#v2").combobox("setValue", article.position);
+					$("#v3").textbox("setValue", article.summary);
+					testEditor.setMarkdown(article.content);
+					profile.val(article.profile);
+					id.val(article.id);
+				}
+				
+			},
+			error:function(data){ 
+				$.messager.alert('Failed','未查找到文章，刷新再试！'); 
+			}
+		});
+
+}else{
+	$.messager.alert('警告','请选中表格中一篇文章');
+}
+}
+function formCheck(form){
+	inputs = form.find('input[name]');
+	var good = true;
+	inputs.each(function(){
+		input =$(this);
+		if((input.val() == '' || input.val() == null) && input.attr('type') != 'file'){
+		$.messager.alert('警告',input.attr('name') + ' 不能为空！');
+		good = false;
+		return false;//continue 用return true。这里的return针对function(){}
+		}
+	});
+	return good;
+}
+function addSArt(){
+	var right = formCheck(newsletter); 
+	if(right){
+	var formData = new FormData(newsletter[0]); 
+	$.ajax({
+		type : "POST",
+		data:formData,
+		dataType:'json',
+		contentType: false,
+	    processData: false,
+		url : baseUrl+'addsart/',
+		success : function(data){
+			$('#dlg3').dialog('close');
+			$.messager.alert('Success','短讯发布成功！'); 
+		},
+		error:function(data){ 
+			$.messager.alert('Failed','短讯发布失败！'); 
+		}
+	});
+	
+	
+	}
+}
+function updatepsd(){
+	if(formCheck($('#adminupd'))) {
 	$.ajax({
 		type : "POST",
 		url : baseUrl+'updatepsd/'+$('#id').val()+'/?password='+$('#p2').val(),
@@ -24,52 +120,63 @@ function updatepsd(){
 					});
 				},
 				error:function(data){ 
-					alert("请求失败"+data.responseText);}
+					$.messager.alert('Warning','更新密码失败');
+				}
 			});
-			alert('更改成功，请重新登陆！')
+			$.messager.alert('Success','更改成功，请重新登陆！');
 			$('#dlg2').dialog('close');
 			
 		}
 	});
 	}
 }
+/*
+ 如上，通过$('#uploadForm').serialize()可以对 form 表单进行序列化，从而将 form 表单中的所有参数传递到服务端。
+但是上述方式，只能传递一般的参数，上传文件的文件流是无法被序列化并传递的。
+不过如今主流浏览器都开始支持一个叫做 FormData 的对象，有了这个对象就可以轻松地使用 Ajax 方式进行文件上传了。
+*/
 function upload(){
+	content.val(testEditor.getMarkdown());
+	if(formCheck(form)) {
+	   var formData = new FormData($("#addart")[0]); 
+
 	$.ajax({
 		type : "POST",
-		data:$('#addart').serialize(),
+		data:formData,
+		dataType:'json',
+		contentType: false,
+	    processData: false,
 		url : baseUrl+'addart/',
 		success : function(data){
-			$.ajax({
-				type : "POST",
-				// dataType : "JSON",//接受返回回来的数据类型，返回值不是json执行error回调函数
-				url : baseUrl+'articles/',
-				success : function(data){
-					$('#dg').datagrid({data:data}).datagrid('clientPaging');
-				},
-				error:function(data){ 
-					alert("请求失败"+data.responseText)}
-			});
-			alert('添加成功');
-			
+			$.messager.alert('Success','文章发布成功！'); 
+			$('[name="id"]').val(data.id);
+			window.open(baseUrl + 'a/' + data.id);
 		},
+//			$.ajax({
+//				type : "POST",
+//				 dataType : "JSON",//接受返回回来的数据类型，返回值不是json执行error回调函数
+//				url : baseUrl+'articles/',
+//				success : function(data){
+//					
+//					$('#dg').datagrid({data:data}).datagrid('clientPaging');
+//				},
+//				error:function(data){ 
+//					alert("获取文章列表失败"+data.responseText)}
+//			});
+//			alert('添加文章成功');
 		error:function(data){ 
-			alert("请求失败"+data.responseText)}
+			$.messager.alert('Failed','文章发布失败！'); 
+		}
 	});
 	
 	
+	}
 }
-function add(){
-	$('#tt').tabs('select', 'Edit');
-	
-}
-
 function add2(){
 	$('#dlg').dialog('open');
 }
 function addAdmin(){
-	if ($('#p1').val() == "" || $('#p1').val() == null || $('[name=username]').val() == "" || $('[name=username]').val() == null ) {
-        alert("密码不能为空");
-	}else{
+	if(formCheck($('#adminadd'))) {
 			$.ajax({
 				type : "POST",
 				data:$('#adminadd').serialize(),
@@ -83,14 +190,15 @@ function addAdmin(){
 							$('#dgg').datagrid({data:data}).datagrid('clientPaging');
 						},
 						error:function(data){ 
-							alert("请求失败"+data.responseText)}
+							alert("请求用户列表失败"+data.responseText)}
 					});
-					alert('添加成功');
+					alert('添加用户成功');
 					$('#dlg').dialog('close');
 					
 				},
 				error:function(data){ 
-					alert("请求失败"+data.responseText)}
+					$.messager.alert('Success','添加用户失败！'); 
+				}
 			});
 	}
 }
@@ -109,10 +217,11 @@ function remove(){
 					var index = $('#dg').datagrid('getRowIndex',row);
 				    $('#dg').datagrid('deleteRow',index);
 				    $('#dg').datagrid('load');
-				    alert('删除成功')
+				    $.messager.alert('Success','删除成功！'); 
 				},
 				error:function(data){ 
-					alert("请求失败"+data.responseText)}
+					$.messager.alert('Success','删除失败！'); 
+					}
 			});
 			
 		}
@@ -122,7 +231,7 @@ function remove2(){
 	var row = $('#dgg').datagrid('getSelected');
 	console.info($('#dgg').datagrid('getRowIndex',row));
 	if(row.id == 1){
-		alert('管理员账号无法删除')
+		$.messager.alert('Success','管理员账号无法删除！'); 
 	}else{
 	if (row){
 		var del = confirm('确定删除这条记录？');
@@ -135,16 +244,25 @@ function remove2(){
 					var index = $('#dgg').datagrid('getRowIndex',row);
 					$('#dgg').datagrid('deleteRow',index);
 					$('#dgg').datagrid('load');
-					alert('删除成功')
+					$.messager.alert('Success','删除成功！'); 
 				},
 				error:function(data){ 
-					alert("请求失败"+data.responseText)}
+					$.messager.alert('Success','请求失败！'); 
+					}
 			});
 			
 		}
 		}
 	}
 }
+$.extend($.fn.validatebox.defaults.rules, {
+    minLength: {
+		validator: function(value, param){
+			return value.length >= param[0];
+		},
+		message: 'Please enter at least {0} characters.'
+    }
+});
 (function($){
 	function pagerFilter(data){
 		if ($.isArray(data)){	// is array
@@ -246,6 +364,38 @@ function remove2(){
 	})
 })(jQuery);
 
+
+
+var testEditor;
+document.onkeydown = function(e) {
+    //console.log(e.ctrlKey);
+    if (81 == e.keyCode && e.ctrlKey)
+    {
+    	testEditor= editormd("editormd", {
+    		width : "90%",
+    		height : 640,
+    		syncScrolling : "single",
+    		path : baseUrl + "lib/",
+    		saveHTMLToTextarea : true,
+    		 imageUpload : true,
+             imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+             imageUploadURL :baseUrl + "imgupload/",
+    	});
+    }
+}
+$(document).one('mousedown',function(){
+	testEditor= editormd("editormd", {
+		width : "90%",
+		height : 640,
+		syncScrolling : "single",
+		path : baseUrl + "lib/",
+		saveHTMLToTextarea : true,
+		 imageUpload : true,
+         imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+         imageUploadURL :baseUrl + "imgupload/",
+	});
+})
+
 $(function(){
 
 	$('#updatepsd').click(function(){
@@ -272,8 +422,16 @@ $(function(){
 		error:function(data){ 
 			alert("请求失败"+data.responseText)}
 	});
-	
-	
+	testEditor = editormd("editormd", {
+		width : "90%",
+		height : 640,
+		syncScrolling : "single",
+		path : baseUrl + "lib/",
+		saveHTMLToTextarea : true,
+		 imageUpload : true,
+         imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+         imageUploadURL :baseUrl + "imgupload/",
+	});
 	
 	
 		});

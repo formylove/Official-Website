@@ -25424,47 +25424,47 @@ padding-left
 	display: block
 }
 
-.index_36kr .list_con {
+.index_syt .list_con {
 	margin-top: 1rem
 }
 
-.index_36kr .rightlib {
+.index_syt .rightlib {
 	width: 290px;
 	padding-top: .75rem
 }
 
-.index_36kr .rightlib .a_d_bd_div .baidu_ads_cell {
+.index_syt .rightlib .a_d_bd_div .baidu_ads_cell {
 	margin-top: 0;
 	margin-bottom: 1.6rem
 }
 
-.index_36kr .mainlib {
+.index_syt .mainlib {
 	max-width: 830px
 }
 
-.index_36kr .mainlib .center_content {
+.index_syt .mainlib .center_content {
 	padding-top: .75rem
 }
 
-.index_36kr .mainlib .high_projects {
+.index_syt .mainlib .high_projects {
 	position: relative
 }
 
-.index_36kr .mainlib .high_projects h2 {
+.index_syt .mainlib .high_projects h2 {
 	padding-top: 0
 }
 
-.index_36kr .mainlib .high_projects .a_ds_banner_wapper {
+.index_syt .mainlib .high_projects .a_ds_banner_wapper {
 	position: relative;
 	overflow: hidden;
 	margin-bottom: .75rem
 }
 
-.index_36kr .mainlib .high_projects .a_ds_banner_wapper .space_padding {
+.index_syt .mainlib .high_projects .a_ds_banner_wapper .space_padding {
 	padding-bottom: 30.864%
 }
 
-.index_36kr .mainlib .high_projects .a_ds_banner_wapper .a_ds_banner.index_banner
+.index_syt .mainlib .high_projects .a_ds_banner_wapper .a_ds_banner.index_banner
 	{
 	position: absolute;
 	top: 0;
@@ -25473,18 +25473,18 @@ padding-left
 	height: 100%
 }
 
-.index_36kr .mainlib .know_how_invest {
+.index_syt .mainlib .know_how_invest {
 	border: 1px solid #f1f1f1
 }
 
-.index_36kr .mainlib .know_how_invest ul {
+.index_syt .mainlib .know_how_invest ul {
 	background-color: #fafafa;
 	list-style: none;
 	padding: 0;
 	color: #999
 }
 
-.index_36kr .mainlib .know_how_invest ul li {
+.index_syt .mainlib .know_how_invest ul li {
 	float: left;
 	width: 25%;
 	background-size: cover;
@@ -25493,7 +25493,7 @@ padding-left
 	position: relative
 }
 
-.index_36kr .mainlib .know_how_invest ul li .txt {
+.index_syt .mainlib .know_how_invest ul li .txt {
 	position: absolute;
 	top: 50%;
 	left: 40%;
@@ -25504,7 +25504,7 @@ padding-left
 	vertical-align: middle
 }
 
-.index_36kr .mainlib .know_how_invest ul li .txt a {
+.index_syt .mainlib .know_how_invest ul li .txt a {
 	display: block;
 	height: 1.8rem;
 	line-height: 1.8rem;
@@ -25515,7 +25515,7 @@ padding-left
 	border-radius: .2rem
 }
 
-.index_36kr .mainlib .know_how_invest ul li .icon {
+.index_syt .mainlib .know_how_invest ul li .icon {
 	position: absolute;
 	top: 50%;
 	left: 20%;
@@ -25525,7 +25525,7 @@ padding-left
 	color: #4285f4
 }
 
-.index_36kr .mainlib .know_how_invest ul li .arrow {
+.index_syt .mainlib .know_how_invest ul li .arrow {
 	position: absolute;
 	right: -2%;
 	top: 50%;
@@ -25537,25 +25537,25 @@ padding-left
 	background-size: cover
 }
 
-.index_36kr .mainlib .know_how_invest ul li:nth-of-type(2) .arrow {
+.index_syt .mainlib .know_how_invest ul li:nth-of-type(2) .arrow {
 	right: -8%
 }
 
-.index_36kr .mainlib .know_how_invest ul li:nth-of-type(3) .arrow {
+.index_syt .mainlib .know_how_invest ul li:nth-of-type(3) .arrow {
 	right: 0
 }
 
-.index_36kr .mainlib .know_how_invest ul li:last-child .txt {
+.index_syt .mainlib .know_how_invest ul li:last-child .txt {
 	left: 15%;
 	width: 4rem
 }
 
-.index_36kr .mainlib .editor_recommend .h5_list, .index_36kr .mainlib .editor_recommend .h5_tit
+.index_syt .mainlib .editor_recommend .h5_list, .index_syt .mainlib .editor_recommend .h5_tit
 	{
 	display: none
 }
 
-.index_36kr .mainlib .editor_recommend ul li {
+.index_syt .mainlib .editor_recommend ul li {
 	float: left;
 	margin-right: 2%;
 	position: relative;
@@ -25563,20 +25563,20 @@ padding-left
 	overflow: hidden
 }
 
-.index_36kr .mainlib .editor_recommend ul li:last-child {
+.index_syt .mainlib .editor_recommend ul li:last-child {
 	margin-right: 0
 }
 
-.index_36kr .mainlib .editor_recommend ul li .space_cell {
+.index_syt .mainlib .editor_recommend ul li .space_cell {
 	padding-bottom: 61.538%
 }
 
-.index_36kr .mainlib .editor_recommend ul li .baidu_ads_cell a {
+.index_syt .mainlib .editor_recommend ul li .baidu_ads_cell a {
 	background-size: cover;
 	padding-bottom: 61.538%
 }
 
-.index_36kr .mainlib .editor_recommend ul li a {
+.index_syt .mainlib .editor_recommend ul li a {
 	display: block;
 	width: 100%;
 	position: absolute;
@@ -25584,11 +25584,11 @@ padding-left
 	left: 0
 }
 
-.index_36kr .mainlib .editor_recommend ul li a img {
+.index_syt .mainlib .editor_recommend ul li a img {
 	width: 100%
 }
 
-.index_36kr .mainlib .editor_recommend ul li .des {
+.index_syt .mainlib .editor_recommend ul li .des {
 	position: absolute;
 	font-size: .7rem;
 	word-break: break-all;
@@ -25599,7 +25599,7 @@ padding-left
 	overflow: hidden
 }
 
-.index_36kr .mainlib .editor_recommend ul li .des a {
+.index_syt .mainlib .editor_recommend ul li .des a {
 	color: #fff;
 	display: block;
 	bottom: 0;
@@ -25610,7 +25610,7 @@ padding-left
 	height: auto
 }
 
-.index_36kr .mainlib .editor_recommend ul li .des span {
+.index_syt .mainlib .editor_recommend ul li .des span {
 	padding: .25rem .75rem;
 	display: block;
 	bottom: 0;
@@ -26324,28 +26324,28 @@ padding-left
 	.top_swing {
 		display: none !important
 	}
-	.index_36kr .mainlib .center_content {
+	.index_syt .mainlib .center_content {
 		padding-top: 0;
 		min-width: inherit
 	}
-	.index_36kr .mainlib .a_ds_banner_wapper, .index_36kr .mainlib .high_projects,
-		.index_36kr .mainlib .knowhow_list_box {
+	.index_syt .mainlib .a_ds_banner_wapper, .index_syt .mainlib .high_projects,
+		.index_syt .mainlib .knowhow_list_box {
 		display: none
 	}
-	.index_36kr .mainlib .editor_recommend_box {
+	.index_syt .mainlib .editor_recommend_box {
 		padding-top: 1rem
 	}
-	.index_36kr .mainlib .editor_recommend_box h2 {
+	.index_syt .mainlib .editor_recommend_box h2 {
 		display: none
 	}
-	.index_36kr .mainlib .editor_recommend_box .editor_recommend {
+	.index_syt .mainlib .editor_recommend_box .editor_recommend {
 		display: block;
 		overflow: hidden;
 		position: relative;
 		height: 11.7rem;
 		padding: 0 .75rem
 	}
-	.index_36kr .mainlib .editor_recommend_box .editor_recommend .h5_tit {
+	.index_syt .mainlib .editor_recommend_box .editor_recommend .h5_tit {
 		position: absolute;
 		display: block;
 		z-index: 22;
@@ -26358,29 +26358,29 @@ padding-left
 		border-radius: .25rem;
 		width: 100%
 	}
-	.index_36kr .mainlib .editor_recommend_box .editor_recommend .h5_list {
+	.index_syt .mainlib .editor_recommend_box .editor_recommend .h5_list {
 		width: 100%;
 		display: block;
 		height: 100%;
 		position: relative
 	}
-	.index_36kr .mainlib .editor_recommend_box .editor_recommend .h5_list .slick-list,
-		.index_36kr .mainlib .editor_recommend_box .editor_recommend .h5_list .slick-list .slick-track
+	.index_syt .mainlib .editor_recommend_box .editor_recommend .h5_list .slick-list,
+		.index_syt .mainlib .editor_recommend_box .editor_recommend .h5_list .slick-list .slick-track
 		{
 		height: 100%
 	}
-	.index_36kr .mainlib .editor_recommend_box .editor_recommend .h5_list .cell
+	.index_syt .mainlib .editor_recommend_box .editor_recommend .h5_list .cell
 		{
 		position: absolute;
 		width: 100%;
 		height: 100%
 	}
-	.index_36kr .mainlib .editor_recommend_box .editor_recommend .h5_list .cell a
+	.index_syt .mainlib .editor_recommend_box .editor_recommend .h5_list .cell a
 		{
 		display: block;
 		height: 100%
 	}
-	.index_36kr .mainlib .editor_recommend_box .editor_recommend .h5_list .cell a img
+	.index_syt .mainlib .editor_recommend_box .editor_recommend .h5_list .cell a img
 		{
 		width: 100%;
 		position: absolute;
@@ -26388,7 +26388,7 @@ padding-left
 		left: 0;
 		transform: translateY(-50%)
 	}
-	.index_36kr .mainlib .editor_recommend_box .editor_recommend .h5_list .cell a span
+	.index_syt .mainlib .editor_recommend_box .editor_recommend .h5_list .cell a span
 		{
 		padding: .5rem .75rem;
 		display: block;
@@ -26401,10 +26401,10 @@ padding-left
 		width: 100%;
 		line-height: 1.4
 	}
-	.index_36kr .mainlib .editor_recommend_box .editor_recommend .pc_list {
+	.index_syt .mainlib .editor_recommend_box .editor_recommend .pc_list {
 		display: none
 	}
-	.index_36kr .mainlib .list_con {
+	.index_syt .mainlib .list_con {
 		margin-top: 0;
 		padding: 0 .75rem
 	}

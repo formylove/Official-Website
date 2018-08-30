@@ -2,6 +2,11 @@ package com.hiit.smm.entity;
 
 import java.util.Date;
 
+import org.apache.commons.lang.StringUtils;
+import org.commonmark.node.Node;
+import org.commonmark.parser.Parser;
+import org.commonmark.renderer.html.HtmlRenderer;
+import org.pegdown.PegDownProcessor;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -19,6 +24,17 @@ public class Article {
 	public Article() {
 		Date d = new Date();
 		this.date = String.format("%02d", d.getMonth()+1)+String.format("%02d", d.getDate());
+	}
+
+	public String getHtml() {
+		String html = null;
+		if(!StringUtils.isBlank(content)) {
+			Parser parser = Parser.builder().build();
+			Node md = parser.parse(content);
+			HtmlRenderer rendered = HtmlRenderer.builder().build();
+			html = rendered.render(md);
+		}
+		return html;
 	}
 
 	public String getAuthor() {

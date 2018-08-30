@@ -1,46 +1,42 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<style>
+#email:hover{
+color:blue;
 
-<div class="header-pop-message J_sendPostWin">
-	<div class="message-body">
-		<div class="text">
-			<img alt="loading" src="${baseUrl}img/loading.gif">
-		</div>
-		<div>
-	<center><b style='text-align:center;'>正在努力抓取，请稍后</b></center>
-		</div>
-	</div>
-</div>
+}
+#email{
+color:rgb(61, 70, 77);
+}
+
+
+</style>
 <div class="header-pop-message J_contactUsWin">
 	<div class="message-body">
-	<center><h5>快捷键 Ctrl + Q</h5></center>
-	<center><h5>调出往日资讯</h5></center>
-			
-			
-	<c:forEach var="date" items="${all_date}">
 		<div class="text">
+			<h4>公司电话：</h4>
+			<b>025-52401691</b>
+		</div>
+		<div class="text">
+			<h4>官方QQ：</h4>
 			<b>
-			<a href='${baseUrl}${date}'>
-			2018年
-			<c:if test="${fn:startsWith(date,'0')}">
-			${fn:substring(date,1,2)}
-			</c:if>
-			<c:if test="${!fn:startsWith(date,'0')}">
-			${fn:substring(date,0,2)}
-			</c:if>
-			月
-			<c:if test="${fn:substring(date,3,4)=='0'}">
-			${fn:substring(date,3,4)}
-			</c:if>
-			<c:if test="${fn:substring(date,3,4)!='0'}">
-			${fn:substring(date,2,4)}
-			</c:if>
-			日
-			</a>
+			<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=531653671&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:531653671:51" alt="欢迎垂询" title="欢迎垂询"/></a>
 			</b>
 		</div>
-		</c:forEach>
-		<a href="javascript:void(0)" class="close-win-btn">我知道了</a>
+		<div class="text" id='email'>
+			<h4>公司邮箱：</h4>
+			<b><a href="mailto:services@sheyangtang.com">services@sheyangtang.com</a></b>
+		</div>
+		<div class="text">
+			<h4>小程序微信</h4>
+			<img alt="摄养堂" src="${baseUrl}img/wechatQR.png" style='width:180px'>
+		</div>
+		<div class="text">
+			<h4>公司地址：</h4>
+			<b>南京市玄武区珠江路88号1幢3118室</b>
+		</div>
+		<a href="javascript:void(0)" class="close-win-btn" onclick='closeContactUS()'>我知道了</a>
 	</div>
 </div>

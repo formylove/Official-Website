@@ -162,7 +162,7 @@
         atLink               : true,           // for @link
         emailLink            : true,           // for email address auto link
         taskList             : false,          // Enable Github Flavored Markdown task lists
-        emoji                : false,          // :emoji: , Support Github emoji, Twitter Emoji (Twemoji);
+        emoji                : true,          // :emoji: , Support Github emoji, Twitter Emoji (Twemoji);
                                                // Support FontAwesome icon emoji :fa-xxx: > Using fontAwesome icon web fonts;
                                                // Support Editor.md logo icon emoji :editormd-logo: :editormd-logo-1x: > 1~8x;
         tex                  : false,          // TeX(LaTeX), based on KaTeX
@@ -201,28 +201,28 @@
             h5               : editormd.classPrefix + "bold",
             h6               : editormd.classPrefix + "bold",
             "list-ul"        : "fa-list-ul",
-            "list-ol"        : "fa-list-ol",
+//            "list-ol"        : "fa-list-ol",
             hr               : "fa-minus",
             link             : "fa-link",
             "reference-link" : "fa-anchor",
             image            : "fa-picture-o",
             code             : "fa-code",
-            "preformatted-text" : "fa-file-code-o",
-            "code-block"     : "fa-file-code-o",
+//            "preformatted-text" : "fa-file-code-o",
+//            "code-block"     : "fa-file-code-o",
             table            : "fa-table",
             datetime         : "fa-clock-o",
             emoji            : "fa-smile-o",
             "html-entities"  : "fa-copyright",
-            pagebreak        : "fa-newspaper-o",
+//            pagebreak        : "fa-newspaper-o",
             "goto-line"      : "fa-terminal", // fa-crosshairs
-            watch            : "fa-eye-slash",
-            unwatch          : "fa-eye",
-            preview          : "fa-desktop",
-            search           : "fa-search",
-            fullscreen       : "fa-arrows-alt",
+//            watch            : "fa-eye-cslash",
+//            unwatch          : "fa-eye",
+//            preview          : "fa-desktop",
+//            search           : "fa-search",
+//            fullscreen       : "fa-arrows-alt",
             clear            : "fa-eraser",
             help             : "fa-question-circle",
-            info             : "fa-info-circle"
+//            info             : "fa-info-circle"
         },        
         toolbarIconTexts     : {},
         

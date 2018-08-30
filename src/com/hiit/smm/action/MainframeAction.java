@@ -16,12 +16,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.hiit.smm.entity.Admin;
 import com.hiit.smm.entity.Article;
 import com.hiit.smm.service.AdminService;
 import com.hiit.smm.service.ArticleService;
+import com.hiit.smm.service.Utils;
+
+import net.sf.json.JSONObject;
 
 @Controller
 @RequestMapping(value = "/")
@@ -38,17 +43,26 @@ public class MainframeAction {
 
 	@RequestMapping(value = "/a/{id}")
 	String showArticle(Model m, @PathVariable int id) {// @PathVariable 是必须的
-		
 		String[] all_date = as.getAllDate();
 		m.addAttribute("all_date", all_date);
 
 		m.addAttribute("article", as.getArticle(id));
 		return "article";
 	}
+	@RequestMapping(value = "/article/{id}")
+	@ResponseBody
+	Article getArticle( @PathVariable int id) {// @PathVariable 是必须的
+		Article article = as.getArticle(id);
+		return article;
+	}
 
 	@RequestMapping(value = "/manage/")
 	String manage(Model m) {
 		return "manage";
+	}
+	@RequestMapping(value = "/about/")
+	String about(Model m) {
+		return "aboutus";
 	}
 
 
@@ -59,43 +73,47 @@ public class MainframeAction {
 		return "login";
 	}
 
-	@RequestMapping(value = "{date}")
-	String extractPage(Model m, @PathVariable(value = "date") String date) {
-		List<Article> a_slider = as.getSlidingArticles(date);
-		List<Article> a_rec = as.getRecArticles(date);
-		List<Article> a_latest = as.getLatestArticles(date);
-		List<Article> a_short = as.getShortArticles(date);
-		
-		String[] all_date = as.getAllDate();
-		m.addAttribute("all_date", all_date);
-
-		m.addAttribute("slider", a_slider);
-		m.addAttribute("rec", a_rec);
-		m.addAttribute("latest", a_latest);
-		m.addAttribute("a_short", a_short);
-
-		return "homepage";
-	}
+//	@RequestMapping(value = "{date}")
+//	String extractPage(Model m, @PathVariable(value = "date") String date) {
+//		List<Article> a_slider = as.getSlidingArticles(date);
+//		List<Article> a_rec = as.getRecArticles(date);
+//		List<Article> a_latest = as.getLatestArticles(date);
+//		List<Article> a_short = as.getShortArticles(date);
+//		
+//		String[] all_date = as.getAllDate();
+//		m.addAttribute("all_date", all_date);
+//
+//		m.addAttribute("slider", a_slider);
+//		m.addAttribute("rec", a_rec);
+//		m.addAttribute("latest", a_latest);
+//		m.addAttribute("a_short", a_short);
+//
+//		return "homepage";
+//	}
 
 	@RequestMapping(value = "/")
-	String extractPage(Model m) {
-		String date = as.getLatestDate();
-		List<Article> a_slider = as.getSlidingArticles(date);
-		List<Article> a_rec = as.getRecArticles(date);
-		List<Article> a_latest = as.getLatestArticles(date);
-		List<Article> a_short = as.getShortArticles(date);
-		
-		String[] all_date = as.getAllDate();
-		m.addAttribute("all_date", all_date);
-
-		m.addAttribute("a_short", a_short);
-		m.addAttribute("rec", a_rec);
-		m.addAttribute("latest", a_latest);
-		m.addAttribute("slider", a_slider);
-		System.out.println("slider   " + a_slider.size());
-		System.out.println("short   " + a_short.size());
-		System.out.println("rec   " + a_rec.size());
-		return "homepage";
+	String extractPage(Model m,HttpServletResponse resp,HttpServletRequest req) {
+		String userAgent = req.getHeader("user-agent");
+		if(Utils.isMobile(userAgent)) {
+			
+			return "homepage_m";
+		}else {
+			
+			String date = as.getLatestDate();
+			List<Article> a_slider = as.getSlidingArticles();
+			List<Article> a_rec = as.getRecArticles();
+			List<Article> a_latest = as.getLatestArticles();
+			List<Article> a_short = as.getShortArticles();
+			
+//		String[] all_date = as.getAllDate();
+//		m.addAttribute("all_date", all_date);
+			
+			m.addAttribute("a_short", a_short);
+			m.addAttribute("rec", a_rec);
+			m.addAttribute("latest", a_latest);
+			m.addAttribute("slider", a_slider);
+			return "homepage";
+		}
 	}
 
 	@ResponseBody//注释此方法未ajax方法
@@ -182,10 +200,45 @@ public class MainframeAction {
 	}
 	@RequestMapping(value = "/addart/")
 	@ResponseBody
-	String addart(Article art,HttpServletResponse resp,HttpServletRequest req) {
-		
-		art.setAuthor(ad.who(req).getUsername());
+	Article addart(Article art ,@RequestParam("file") MultipartFile file,HttpServletResponse resp,HttpServletRequest req) {
+		String newName = Utils.UPLOAD_IMG(file);
+		if(null != newName){
+			art.setProfile(newName);
+		}
+		if(art.getId() == -1) {
+		art.setAuthor(ad.who(req).getUsername());//art的id被更新
 		as.addArticle(art);
-		return "success";
+		}else {
+			as.updateArticle(art);
+		}
+		return art;
+	}
+	@RequestMapping(value = "/addsart/")
+	@ResponseBody
+	Article addart(Article art,HttpServletResponse resp,HttpServletRequest req) {
+		if(art.getId() == -1) {
+			art.setAuthor(ad.who(req).getUsername());//art的id被更新
+			as.addArticle(art);
+		}else {
+			as.updateArticle(art);
+		}
+		return art;
+	}
+	
+	@RequestMapping(value = "/imgupload/")
+	@ResponseBody
+	JSONObject uploadMdImg(@RequestParam(value = "editormd-image-file") MultipartFile file,HttpServletResponse resp,HttpServletRequest req) {
+		String newName = Utils.UPLOAD_IMG(file);
+		
+		JSONObject json = new JSONObject();
+		if(null != newName){
+			json.put("url", Utils.BASE_URL + Utils.GALLERY_REL_PATH + newName);
+			json.put("success",1);
+			json.put("message","good");
+		}else {
+			json.put("success",0);
+			json.put("message","failed");
+		}
+		return json;
 	}
 }

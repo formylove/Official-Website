@@ -256,7 +256,6 @@
                 clear            : "清空",
                 search           : "搜索",
                 help             : "使用帮助",
-                info             : "关于" + editormd.title
             },
             buttons : {
                 enter  : "确定",
