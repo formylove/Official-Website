@@ -7,7 +7,7 @@
 <%@ include file="./static_file.jsp" %>
 <link rel="stylesheet" href="${baseUrl}css/homepage.css">
 </head>
-<body>
+<body style='${isMobile?"padding-bottom:0px":""}'>
 
 <%@ include file="./header.jsp" %>
 <%@ include file="./overlay.jsp" %>
@@ -107,7 +107,7 @@
 													<div class="kr_article_list">
 														<div>
 															<ul class="feed_ul">
-																<c:forEach var="a" items="${latest}" varStatus="st">
+																<c:forEach var="a" items="${latest}" varStatus="st" end="${index_l}">
 																	<li><div class="am-cf inner_li">
 																			<a href="${baseUrl}a/${a.id}" target="_blank">
 																				<div class="img_box list-img-loaded">

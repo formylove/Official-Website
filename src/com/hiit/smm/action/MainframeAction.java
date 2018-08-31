@@ -73,31 +73,14 @@ public class MainframeAction {
 		return "login";
 	}
 
-//	@RequestMapping(value = "{date}")
-//	String extractPage(Model m, @PathVariable(value = "date") String date) {
-//		List<Article> a_slider = as.getSlidingArticles(date);
-//		List<Article> a_rec = as.getRecArticles(date);
-//		List<Article> a_latest = as.getLatestArticles(date);
-//		List<Article> a_short = as.getShortArticles(date);
-//		
-//		String[] all_date = as.getAllDate();
-//		m.addAttribute("all_date", all_date);
-//
-//		m.addAttribute("slider", a_slider);
-//		m.addAttribute("rec", a_rec);
-//		m.addAttribute("latest", a_latest);
-//		m.addAttribute("a_short", a_short);
-//
-//		return "homepage";
-//	}
 
 	@RequestMapping(value = "/")
 	String extractPage(Model m,HttpServletResponse resp,HttpServletRequest req) {
-		String userAgent = req.getHeader("user-agent");
-		if(Utils.isMobile(userAgent)) {
-			
-			return "homepage_m";
-		}else {
+//		String userAgent = req.getHeader("user-agent");
+//		if(Utils.isMobile(userAgent)) {
+//			
+//			return "homepage_m";
+//		}else {
 			
 			String date = as.getLatestDate();
 			List<Article> a_slider = as.getSlidingArticles();
@@ -105,15 +88,11 @@ public class MainframeAction {
 			List<Article> a_latest = as.getLatestArticles();
 			List<Article> a_short = as.getShortArticles();
 			
-//		String[] all_date = as.getAllDate();
-//		m.addAttribute("all_date", all_date);
-			
 			m.addAttribute("a_short", a_short);
 			m.addAttribute("rec", a_rec);
 			m.addAttribute("latest", a_latest);
 			m.addAttribute("slider", a_slider);
 			return "homepage";
-		}
 	}
 
 	@ResponseBody//注释此方法未ajax方法

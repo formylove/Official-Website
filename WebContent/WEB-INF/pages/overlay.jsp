@@ -22,8 +22,7 @@ color:rgb(61, 70, 77);
 		<div class="text">
 			<h4>官方QQ：</h4>
 			<b>
-			<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=531653671&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:531653671:51" alt="欢迎垂询" title="欢迎垂询"/></a>
-			</b>
+<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3497137832&amp;site=qq&amp;menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:3497137832:41" alt="欢迎垂询" title="欢迎垂询"></a>			</b>
 		</div>
 		<div class="text" id='email'>
 			<h4>公司邮箱：</h4>

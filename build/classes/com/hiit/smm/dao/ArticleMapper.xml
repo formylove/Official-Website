@@ -19,7 +19,7 @@ select * from news where position = 2 order by id desc limit 0,3
 </select>
 
 <select id="getLatestArticles" resultType="article">
-select * from news where position = 3 order by id desc limit 0,2
+select * from news where position = 3 order by id desc limit 0,4
 </select>
 
 

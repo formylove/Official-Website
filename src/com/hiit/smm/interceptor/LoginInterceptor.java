@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.hiit.smm.entity.Admin;
 import com.hiit.smm.service.AdminService;
+import com.hiit.smm.service.Utils;
 
 public class LoginInterceptor implements HandlerInterceptor {
 	@Autowired
@@ -44,6 +45,15 @@ public class LoginInterceptor implements HandlerInterceptor {
 		if (url.toLowerCase().endsWith(".css") || url.toLowerCase().endsWith(".js") || url.toLowerCase().endsWith(".png") || url.toLowerCase().endsWith(".gif")) {
 
 		} else {
+			String userAgent = req.getHeader("user-agent");
+			boolean isMobile = Utils.isMobile(userAgent);
+			if(isMobile) {
+				req.setAttribute("index_l", 3);
+			}else {
+				
+				req.setAttribute("index_l", 2);
+			}
+			req.setAttribute("isMobile", isMobile);
 			Admin admin = ad.who(req);
 			req.setAttribute("admin", admin);
 		}
