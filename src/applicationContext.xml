@@ -25,7 +25,7 @@
 <mvc:resources mapping="/plugins/**" location="/WEB-INF/md/plugins/"/>
 <mvc:resources mapping="/lib/**" location="/WEB-INF/md/lib/"/>
 <mvc:resources mapping="/img/**" location="/WEB-INF/img/"/>
-<mvc:resources mapping="/gallery/**" location="file:c:/gallery/"/>
+<mvc:resources mapping="/gallery/**" location="file:/usr/gallery/"/>
 <mvc:resources mapping="/portrait/**" location="/WEB-INF/portrait/"/>
 <context:property-placeholder location="classpath:db.properties"/>
 <mvc:interceptors>

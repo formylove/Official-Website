@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class Utils {
 static	Logger logger = Logger.getLogger(Utils.class);
-public static String GALLERY_PATH="C:/gallery/";
+public static String GALLERY_PATH="/usr/gallery/";
 public static String GALLERY_REL_PATH="gallery/";
 public static String BASE_URL="http://sheyangtang.com/";
 	public Utils() {
