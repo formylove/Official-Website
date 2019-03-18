@@ -3,9 +3,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="zh-CN" class="" style="font-size: 20px;">
 <head>
-<title>摄养堂生物科技有限公司官网</title>
 <%@ include file="./static_file.jsp" %>
-<link rel="stylesheet" href="${baseUrl}css/homepage.css">
+<title><spring:eval expression="@propertyConfigurer.getProperty('site.name.medium')" />有限公司官网</title>
+<link rel="stylesheet" href="css/homepage.css">
 </head>
 <body style='${isMobile?"padding-bottom:0px":""}'>
 
@@ -31,7 +31,7 @@
 													<div class="slick-track" style="opacity: 1; width: 4482px;" role="listbox">
 														<div name="sliders" id="0"
 															class="banner_cell radius has_title slick-slide slick-current slick-active" style="width: 800px; position: relative; left: 0px; top: 0px;z-index: 999; opacity: 1; ">
-															<a target="_blank"  href="${baseUrl}a/${slider[0].id}" style="background-image: url(&quot;${baseUrl}gallery/${slider[0].profile}&quot;);" tabindex="-1"></a>
+															<a target="_blank"  href="a/${slider[0].id}" style="background-image: url(&quot;${baseUrl}gallery/${slider[0].profile}&quot;);" tabindex="-1"></a>
 															<div class="info">
 																<div class="abstract">${slider[0].title}</div>
 															</div>

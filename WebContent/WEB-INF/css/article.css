@@ -550,17 +550,8 @@ header.common-header .path1, header.common-header .path2, header.common-header .
 
 @font-face {
 	font-family: 'icomoon-header';
-	src:
-		url('//sta.36krcnd.com/common-module/common-header/icomoon/fonts/icomoon-9aa54.eot?jp7diz');
-	src:
-		url('//sta.36krcnd.com/common-module/common-header/icomoon/fonts/icomoon-9aa54.eot?jp7diz#iefix')
-		format('embedded-opentype'),
-		url('//sta.36krcnd.com/common-module/common-header/icomoon/fonts/icomoon-c841b.ttf?jp7diz')
-		format('truetype'),
-		url('//sta.36krcnd.com/common-module/common-header/icomoon/fonts/icomoon-a3cbc.woff?jp7diz')
-		format('woff'),
-		url('//sta.36krcnd.com/common-module/common-header/icomoon/fonts/icomoon-22bbd.svg?jp7diz#icomoon')
-		format('svg');
+	src:url('../font/icomoon-header.ttf') format('truetype');
+
 	font-weight: normal;
 	font-style: normal;
 }
@@ -30992,17 +30983,7 @@ to {
 
 @font-face {
 	font-family: icomoon;
-	src:
-		url(//sta.36krcnd.com/36krx2016-front/static/icomoon.4a094586278e3170e260e66c27bf3612.eot);
-	src:
-		url(//sta.36krcnd.com/36krx2016-front/static/icomoon.4a094586278e3170e260e66c27bf3612.eot#iefix)
-		format("embedded-opentype"),
-		url(//sta.36krcnd.com/36krx2016-front/static/icomoon.3b2a1be82b2de5ece216614c52077a86.ttf)
-		format("truetype"),
-		url(//sta.36krcnd.com/36krx2016-front/static/icomoon.41d4079d995984db062e821c68252ee5.woff)
-		format("woff"),
-		url(//sta.36krcnd.com/36krx2016-front/static/icomoon.9c83013edeb45158d322d4b2887f2539.svg#icomoon)
-		format("svg");
+	src: url('/font/icomoon.ttf') format('truetype');
 	font-weight: 400;
 	font-style: normal
 }

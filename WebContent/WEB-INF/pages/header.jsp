@@ -2,9 +2,8 @@
 <header class="common-header J_commonHeaderWrapper scrolling" >
 	<div class="container">
 		<div class="pc-nav">
-			<a class="logo" href="${baseUrl}"> <img
-				src="${baseUrl}img//logo.png"
-				alt="摄养堂生物科技有限公司">
+			<a class="logo" href=""> 
+			<img src="img//logo.png" alt="<spring:eval expression="@propertyConfigurer.getProperty('site.name.medium')" />">
 			</a>
 			<div class="triggers">
 			</div>

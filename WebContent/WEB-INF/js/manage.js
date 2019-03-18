@@ -1,4 +1,3 @@
-baseUrl='http://sheyangtang.com/';
 var editIndex = undefined;
 var title = $('#addart [name=title]');
 var summary = $('#addart [name=summary]');

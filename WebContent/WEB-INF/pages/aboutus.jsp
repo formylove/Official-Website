@@ -7,7 +7,7 @@
 <head>
 <title>关于我们</title>
 <%@ include file="./static_file.jsp"%>
-<link rel="stylesheet" href="${baseUrl}css/homepage.css">
+<link rel="stylesheet" href="css/homepage.css">
 </head>
 <body>
 

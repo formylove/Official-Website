@@ -1,4 +1,3 @@
-baseUrl='http://sheyangtang.com/';
 var iCount;
 var timeInterval=101000;
 $(

@@ -6,31 +6,52 @@
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation=
 	 "http://www.springframework.org/schema/beans
-	 http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	 http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
 	 http://www.springframework.org/schema/aop
-	 http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	 http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 	 http://www.springframework.org/schema/mvc
-	 http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+	 http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 	 http://www.springframework.org/schema/context
-	 http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	 http://www.springframework.org/schema/context/spring-context-4.3.xsd
+	 http://www.springframework.org/schema/util  
+     http://www.springframework.org/schema/util/spring-util-2.0.xsd">
 	 
 <context:component-scan base-package="com.hiit.smm"></context:component-scan>
+<context:property-placeholder location="classpath:db.properties,classpath:config.properties"/>
+<mvc:resources mapping="/${image.path.rel}**" location="file:${image.path}"/>
 <mvc:resources mapping="/css/**" location="/WEB-INF/css/"/>
 <mvc:resources mapping="/js/**" location="/WEB-INF/js/"/>
+<mvc:resources mapping="/font/**" location="/WEB-INF/font/"/>
 <mvc:resources mapping="/easyui/**" location="/WEB-INF/easyui/"/>
 <mvc:resources mapping="/sequence/**" location="/WEB-INF/sequence/"/>
 <mvc:resources mapping="/md/**" location="/WEB-INF/md/"/>
 <mvc:resources mapping="/plugins/**" location="/WEB-INF/md/plugins/"/>
 <mvc:resources mapping="/lib/**" location="/WEB-INF/md/lib/"/>
 <mvc:resources mapping="/img/**" location="/WEB-INF/img/"/>
-<mvc:resources mapping="/gallery/**" location="file:/usr/gallery/"/>
 <mvc:resources mapping="/portrait/**" location="/WEB-INF/portrait/"/>
-<context:property-placeholder location="classpath:db.properties"/>
 <mvc:interceptors>
 <bean class="com.hiit.smm.interceptor.LoginInterceptor"></bean>
 </mvc:interceptors>
+<bean id="springConfig" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+    <property name="ignoreResourceNotFound" value="true"/>
+    <property name="localOverride" value="true"/>
+    <property name="locations">
+        <list>
+            <value>classpath:config.properties</value>
+        </list>
+    </property>
+</bean>
+<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="properties" ref="springConfig"/>
+</bean>
+<util:properties id="propertyConfigurer" 
+                  location="classpath:config.properties"/>
+<context:property-placeholder properties-ref="propertyConfigurer" />
+
+
 <mvc:annotation-driven conversion-service="intConverter"/>
 <bean id="intConverter" class="org.springframework.context.support.ConversionServiceFactoryBean">
 <property name="converters">

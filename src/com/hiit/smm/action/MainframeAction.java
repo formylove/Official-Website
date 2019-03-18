@@ -76,11 +76,10 @@ public class MainframeAction {
 
 	@RequestMapping(value = "/")
 	String extractPage(Model m,HttpServletResponse resp,HttpServletRequest req) {
-//		String userAgent = req.getHeader("user-agent");
-//		if(Utils.isMobile(userAgent)) {
-//			
-//			return "homepage_m";
-//		}else {
+		String userAgent = req.getHeader("user-agent");
+		if(Utils.isMobile(userAgent)) {
+			return "homepage_m";
+		}else {
 			
 			String date = as.getLatestDate();
 			List<Article> a_slider = as.getSlidingArticles();
@@ -93,6 +92,7 @@ public class MainframeAction {
 			m.addAttribute("latest", a_latest);
 			m.addAttribute("slider", a_slider);
 			return "homepage";
+	}
 	}
 
 	@ResponseBody//注释此方法未ajax方法

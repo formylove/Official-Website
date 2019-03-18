@@ -402,8 +402,7 @@ header.common-header .path4 {
 }
 @font-face {
   font-family: 'icomoon-header';
-  src: url('//sta.36krcnd.com/common-module/common-header/icomoon/fonts/icomoon-9aa54.eot?jp7diz');
-  src: url('//sta.36krcnd.com/common-module/common-header/icomoon/fonts/icomoon-9aa54.eot?jp7diz#iefix') format('embedded-opentype'), url('//sta.36krcnd.com/common-module/common-header/icomoon/fonts/icomoon-c841b.ttf?jp7diz') format('truetype'), url('//sta.36krcnd.com/common-module/common-header/icomoon/fonts/icomoon-a3cbc.woff?jp7diz') format('woff'), url('//sta.36krcnd.com/common-module/common-header/icomoon/fonts/icomoon-22bbd.svg?jp7diz#icomoon') format('svg');
+  src: url('../font/icomoon-header.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

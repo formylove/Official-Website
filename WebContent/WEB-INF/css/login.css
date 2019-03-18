@@ -7602,7 +7602,7 @@ body .common-wide-form.success-pages-guide .footer-success ul li span {
 	left: 0;
 	bottom: 208px;
 	right: 0;
-	background: url(../images/a051bb46.login-bg.jpg) no-repeat #008df3;
+	background: url(../img/a051bb46.login-bg.jpg) no-repeat #008df3;
 	background-size: cover;
 	overflow: hidden
 }
@@ -8487,22 +8487,14 @@ body .common-wide-form.success-pages-guide .footer-success ul li span {
 }
 
 @font-face {
-	font-family: icomoon;
-	src: url(//sta.36krcnd.com/passport/fonts/524ffbd4.icomoon.eot);
-	src: url(//sta.36krcnd.com/passport/fonts/524ffbd4.icomoon.eot)
-		format('embedded-opentype'),
-		url(//sta.36krcnd.com/passport/fonts/5b5a036f.icomoon.ttf)
-		format('truetype'),
-		url(//sta.36krcnd.com/passport/fonts/63ef9b24.icomoon.woff)
-		format('woff'),
-		url(//sta.36krcnd.com/passport/fonts/60a43765.icomoon.svg)
-		format('svg');
+	font-family: icomoon-login;
+	src: url('../font/icomoon-login.ttf') format('truetype');
 	font-weight: 400;
 	font-style: normal
 }
 
 [class*=" icon-"], [class^=icon-] {
-	font-family: icomoon;
+	font-family: icomoon-login;
 	speak: none;
 	font-style: normal;
 	font-weight: 400;

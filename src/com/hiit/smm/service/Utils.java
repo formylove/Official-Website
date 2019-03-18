@@ -2,6 +2,7 @@ package com.hiit.smm.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ResourceBundle;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -13,9 +14,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class Utils {
 static	Logger logger = Logger.getLogger(Utils.class);
-public static String GALLERY_PATH="/usr/gallery/";
-public static String GALLERY_REL_PATH="gallery/";
-public static String BASE_URL="http://sheyangtang.com/";
+public static String GALLERY_PATH = ResourceBundle.getBundle("config").getString("image.path");
+public static String GALLERY_REL_PATH = ResourceBundle.getBundle("config").getString("image.path.rel");
+public static String BASE_URL = ResourceBundle.getBundle("config").getString("baseUrl");
 	public Utils() {
 		// TODO Auto-generated constructor stubH
 	}
@@ -32,7 +33,7 @@ public static String UPLOAD_IMG(MultipartFile file) {
 			dir.mkdir();
 		}
 		try {
-			file.transferTo(new File(GALLERY_PATH+newName));
+			file.transferTo(new File(GALLERY_PATH + newName));
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
