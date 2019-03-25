@@ -2,11 +2,10 @@
 使用的技术有Spring+SpringMVC+MyBatis+Sqlite
 后台用的是easyui组建框架，
 markdown编辑器用的是editor.md
-可用通过访问sheyangtang.com查看该网站
-!()[https://github.com/formylove/Official-Website/11.jpg]
-!()[https://github.com/formylove/Official-Website/12.png]
-!()[https://github.com/formylove/Official-Website/13.png]
-!()[https://github.com/formylove/Official-Website/14.png]
+!()[https://github.com/formylove/Official-Website/blob/master/11.jpg]
+!()[https://github.com/formylove/Official-Website/blob/master/12.jpg]
+!()[https://github.com/formylove/Official-Website/blob/master/14.png]
+!()[hhttps://github.com/formylove/Official-Website/blob/master/15.png]
 
 
 
